@@ -12,6 +12,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	<script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="app.js"></script>
 </head>
 <body>
 	<h1>No Egg Wasted</h1>
@@ -67,7 +68,9 @@
 			alert("Use a positive integer");
 		}
 		else{
-			var link = "http://localhost:3000/eggcholesterol/"+$("#cholnum").val();
+			var num = $("#cholnum").val();
+			var link = `http://localhost:3000/eggcholesterol/${num}`;
+			console.log(link);
 			$.getJSON(link, function(data){
 				$("#tellchol").html("<p>"+data.cholesterol+"mg. of cholesterol</p>");
 			});
@@ -79,7 +82,9 @@
 			alert("Use a positive integer");
 		}
 		else{
-			var link = "http://localhost:3000/eggshell/"+$("#shellnum").val();
+			var num = $("#shellnum").val();
+			var link = `http://localhost:3000/eggshell/${num}`;
+			console.log(link);
 			$.getJSON(link, function(data){
 				$("#tellshell").html("<p>"+data.shellmass+"grams of egg shells</p>");
 			});
@@ -91,7 +96,9 @@
 			alert("Use a positive integer");
 		}
 		else{
-			var link = "http://localhost:3000/eggsub/"+$("#subnum").val();
+			var num = $("#subnum").val();
+			var link = `http://localhost:3000/eggsub/${num}`;
+			console.log(link);
 			$.getJSON(link, function(data){
 				$("#tellsub").html("<p>"+data.bananasub+" of banana</p><p>"+
 					data.othersubcup+" cups or "+data.othersubtbsp+" tablespoons of applesauce, silken tofu, or buttermilk</p>");
@@ -104,7 +111,9 @@
 			alert("Use a positive integer");
 		}
 		else{
-			var link = "http://localhost:3000/eggprotein/"+$("#proteinnum").val();
+			var num = $("#proteinnum").val();
+			var link = `http://localhost:3000/eggprotein/${num}`;
+			console.log(link);
 			$.getJSON(link, function(data){
 				$("#tellprotein").html("<p>"+data.protein+" grams of protein</p>");
 			});

@@ -10,12 +10,18 @@ body {
 	float: center;
 	margin: 0 160px;
 	color: #5D3A00;
-	background-image: url('./images/pawpattern.jpg');
+	background-image: url('./images/eggs.png');
+	background-repeat: repeat;
+}
+
+.whiteblock {
+	background-color: #FFFFBB;
 }
 
 h1 {
-	color: #FFAA99;
+	color: #bc5b0b;
 	padding: 5px;
+	background-color: #FFFFFF;
 }
 
 .copyright{
