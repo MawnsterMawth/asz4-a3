@@ -1,0 +1,21 @@
+{
+  "name": "a3-api",
+  "version": "1.0.0",
+  "description": "node.js application for assignment 3",
+  "main": "app.js",
+  "scripts": {
+    "build": "node app.js"
+  },
+  "keywords": [
+    "node",
+    "js",
+    "egg",
+    "cholesterol",
+    "calculation"
+  ],
+  "author": "ashley s zheng",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}

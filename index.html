@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="author" content="ashley zheng">
+	<meta name="description" content="test the knowledge on local APIs">
+    <title>Assignment 3</title>
+	<link href='http://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assign3.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+	<h1>No Egg Wasted</h1>
+<div class="whiteblock">
+<div class="container">
+	<ul class="nav nav-tabs">
+		<li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+		<li><a data-toggle="tab" href="#menu1">Check Your Cholesterol</a></li>
+		<li><a data-toggle="tab" href="#menu2">Use Your Shells</a></li>
+		<li><a data-toggle="tab" href="#menu3">Need substitutes?</a></li>
+		<li><a data-toggle="tab" href="#menu4">Get Protein</a></li>
+	</ul>
+	<div class="tab-content">
+		<div id="home" class="tab-pane fade in active">
+			<h3>HOME</h3>
+			<p>Here, every bit of an egg has value and you'll be saved from a second trip to the grocery store!</p>
+		</div>
+		<div id="menu1" class="tab-pane fade">
+			<h3>Cholesterol Calculator</h3>
+			<p> Assume eggs are roughly average sized.</p>
+			<p><label for="eggnumchol">Number of eggs</label><br><input type="number" id="cholnum" name="cholnum" min="1" max="100" required></p>
+			<p><button id="calcchol">Calculate</button></p>
+			<div id="tellchol"></div>
+		</div>
+		<div id="menu2" class="tab-pane fade">
+			<h3>Calculate Eggshell Mass</h3>
+			<p> Assume eggs are roughly average sized.</p>
+			<p><label for="eggnumshell">Number of eggs</label><br><input type="number" id="shellnum" name="shellnum" min="1" max="100" required></p>
+			<p><button id="calcshell">Calculate</button></p>
+			<div id="tellshell"></div>
+		</div>
+		<div id="menu3" class="tab-pane fade">
+			<h3>Find How Much Egg Substitute You Need for a Cake</h3>
+			<p><label for="eggnumsub">Number of eggs</label><br><input type="number" id="subnum" name="subnum" min="1" max="100" required></p>
+			<p><button id="calcsub">Calculate</button></p>
+			<div id="tellsub"></div>
+		</div>
+		<div id="menu4" class="tab-pane fade">
+			<h3>Calculate Your Protein</h3>
+			<p> Assume eggs are roughly average sized.</p>
+			<p><label for="eggnumprotein">Number of eggs</label><br><input type="number" id="proteinnum" name="proteinnum" min="1" max="100" required></p>
+			<p><button id="calcprotein">Calculate</button></p>
+			<div id="tellprotein"></div>
+		</div>
+	</div>
+</div>
+</div>
+<p class='copyright'>All images are copyright to their owners. This is just a hypothetical site 2022 &copy No Egg Wasted</p>
+</body>
+<script>
+	$("#calcchol").on("click", function(){
+		if($("#cholnum").val()==null || $("#cholnum").val() <= 0){
+			alert("Use a positive integer");
+		}
+		else{
+			var link = "http://localhost:3000/eggcholesterol/"+$("#cholnum").val();
+			$.getJSON(link, function(data){
+				$("#tellchol").html("<p>"+data.cholesterol+"mg. of cholesterol</p>");
+			});
+		}
+	});
+
+	$("#calcshell").on("click", function(){
+		if($("#shellnum").val()==null || $("#shellnum").val() <= 0){
+			alert("Use a positive integer");
+		}
+		else{
+			var link = "http://localhost:3000/eggshell/"+$("#shellnum").val();
+			$.getJSON(link, function(data){
+				$("#tellshell").html("<p>"+data.shellmass+"grams of egg shells</p>");
+			});
+		}
+	});
+
+	$("#calcsub").on("click", function(){
+		if($("#subnum").val()==null || $("#subnum").val() <= 0){
+			alert("Use a positive integer");
+		}
+		else{
+			var link = "http://localhost:3000/eggsub/"+$("#subnum").val();
+			$.getJSON(link, function(data){
+				$("#tellsub").html("<p>"+data.bananasub+" of banana</p><p>"+
+					data.othersubcup+" cups or "+data.othersubtbsp+" tablespoons of applesauce, silken tofu, or buttermilk</p>");
+			});
+		}
+	});
+	
+	$("#calcprotein").on("click", function(){
+		if($("#proteinnum").val()==null || $("#proteinnum").val() <= 0){
+			alert("Use a positive integer");
+		}
+		else{
+			var link = "http://localhost:3000/eggprotein/"+$("#proteinnum").val();
+			$.getJSON(link, function(data){
+				$("#tellprotein").html("<p>"+data.protein+" grams of protein</p>");
+			});
+		}
+	});
+</script>
+</html>
